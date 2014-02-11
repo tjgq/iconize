@@ -1,0 +1,31 @@
+{
+  "name": "iconize",
+  "version": "0.0.1",
+  "description": "Converts a bunch of SVG icons to CSS data URLs with PNG fallbacks",
+  "keywords": [
+    "icon",
+    "css",
+    "svg"
+  ],
+  "author": "Tiago Quelhas <tiagoq@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/tjgq/iconize"
+  },
+  "homepage": "http://github.com/tjgq/iconize",
+  "bugs": "http://github.com/tjgq/iconize/issues",
+  "license": "BSD-3-Clause",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "async": "~0.2.10",
+    "lodash": "~2.4.1",
+    "svgo": "~0.4.4",
+    "extend": "~1.2.1",
+    "svg2png": "~1.0.1",
+    "temp": "~0.6.0",
+    "xml2js": "~0.4.1"
+  }
+}
