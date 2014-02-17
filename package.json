@@ -1,7 +1,7 @@
 {
   "name": "iconize",
-  "version": "0.0.1",
-  "description": "Converts a bunch of SVG icons to CSS data URLs with PNG fallbacks",
+  "version": "0.1.1",
+  "description": "Converts a bunch of SVG icons to CSS data URLs with PNG fallbacks.",
   "keywords": [
     "icon",
     "css",
