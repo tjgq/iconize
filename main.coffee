@@ -61,6 +61,8 @@ genCss = (svgPath, variant, opts, done) ->
         #{opts.cssSelector(svgPath, variant)} {
             width: #{dims.width}px;
             height: #{dims.height}px;
+            background-size: contain;
+            background-repeat: no-repeat;
             background-image: url(#{pngUrl});
             background-image: url(#{svgStrToUri(variant.svgStr)}), none;
         }
