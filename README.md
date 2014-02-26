@@ -24,6 +24,8 @@ Takes an array of file paths and an options object. Available options are:
 
     * *selector* is *variant.selector*.
 
+  * *variantsOnly*: if true, only build the specified variants (see below). By default, the unmodified icon is also built.
+
   * *variants*: a (possibly empty) array of objects with keys:
     * *name*: variant name to be appended to PNG file names.
     * *selector*: string to be appended to the CSS selector for this variant.

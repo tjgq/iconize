@@ -14,7 +14,7 @@ baseNameNoExt = (filePath) ->
     ext = path.extname(filePath)
     baseName[...baseName.length-ext.length]
 
-lowercaseBaseNameNoExt = (filePath) ->
+lowercaseBaseNameNoExt = (filePath) -> 
     baseNameNoExt(filePath)
         .replace(/[^-_A-Za-z0-9]/g, '')
         .toLowerCase()
@@ -95,10 +95,11 @@ iconizeSingle = (svgPath, opts, done = (->)) ->
             svgStr: v.transform(svgStr)
 
         # Treat the original version as a variant.
-        iconVariants.unshift
-            name: null
-            selector: null
-            svgStr: svgStr
+        unless opts.variantsOnly
+            iconVariants.unshift
+                name: null
+                selector: null
+                svgStr: svgStr
 
         # Optimize the SVG files.
         fn = (v, done) ->
@@ -146,6 +147,7 @@ defaultOptions =
     cssPath: 'icons.css'
     pngDir: 'png'
     cssSelector: defaultCssSelector
+    variantsOnly: false
     variants: []
 
 module.exports =

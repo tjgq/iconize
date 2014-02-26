@@ -128,11 +128,13 @@
           svgStr: v.transform(svgStr)
         };
       });
-      iconVariants.unshift({
-        name: null,
-        selector: null,
-        svgStr: svgStr
-      });
+      if (!opts.variantsOnly) {
+        iconVariants.unshift({
+          name: null,
+          selector: null,
+          svgStr: svgStr
+        });
+      }
       fn = function(v, done) {
         return optimizeSvg(v.svgStr, function(err, optStr) {
           v.svgStr = optStr;
@@ -200,6 +202,7 @@
     cssPath: 'icons.css',
     pngDir: 'png',
     cssSelector: defaultCssSelector,
+    variantsOnly: false,
     variants: []
   };
 
