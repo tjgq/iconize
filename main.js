@@ -97,7 +97,7 @@
     pngUrl = opts.cssUrlPrefix + sep + pngName(svgPath, variant);
     return svgDims(variant.svgStr, opts, function(err, dims) {
       var css;
-      css = "" + (opts.svgSelector(svgPath, variant)) + " {\n    width: " + dims.width + "px;\n    height: " + dims.height + "px;\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-image: url(" + (svgStrToUri(variant.svgStr)) + ");\n}\n" + (opts.pngSelector(svgPath, variant)) + " {\n    width: " + dims.width + "px;\n    height: " + dims.height + "px;\n    background-size: contain;\n    background-repeat: no-repeat;\n    background-image: url(" + pngUrl + ");\n}";
+      css = "" + (opts.svgSelector(svgPath, variant)) + " {\n    width: " + dims.width + "px;\n    height: " + dims.height + "px;\n    background-size: " + dims.width + "px " + dims.height + "px;\n    background-repeat: no-repeat;\n    background-image: url(" + (svgStrToUri(variant.svgStr)) + ");\n}\n" + (opts.pngSelector(svgPath, variant)) + " {\n    width: " + dims.width + "px;\n    height: " + dims.height + "px;\n    background-size: " + dims.width + "px " + dims.height + "px;\n    background-repeat: no-repeat;\n    background-image: url(" + pngUrl + ");\n}";
       return done(null, css);
     });
   };

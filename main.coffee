@@ -66,14 +66,14 @@ genCss = (svgPath, variant, opts, done) ->
         #{opts.svgSelector(svgPath, variant)} {
             width: #{dims.width}px;
             height: #{dims.height}px;
-            background-size: contain;
+            background-size: #{dims.width}px #{dims.height}px;
             background-repeat: no-repeat;
             background-image: url(#{svgStrToUri(variant.svgStr)});
         }
         #{opts.pngSelector(svgPath, variant)} {
             width: #{dims.width}px;
             height: #{dims.height}px;
-            background-size: contain;
+            background-size: #{dims.width}px #{dims.height}px;
             background-repeat: no-repeat;
             background-image: url(#{pngUrl});
         }
