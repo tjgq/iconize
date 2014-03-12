@@ -19,10 +19,15 @@ lowercaseBaseNameNoExt = (filePath) ->
         .replace(/[^-_A-Za-z0-9]/g, '')
         .toLowerCase()
 
-defaultCssSelector = (svgPath, variant) ->
+defaultSvgSelector = (svgPath, variant) ->
     base = lowercaseBaseNameNoExt(svgPath)
     selector = variant.selector or ''
-    ".icon-#{base}#{selector}"
+    ".svg .icon-#{base}#{selector}"
+
+defaultPngSelector = (svgPath, variant) ->
+    base = lowercaseBaseNameNoExt(svgPath)
+    selector = variant.selector or ''
+    ".no-svg .icon-#{base}#{selector}"
 
 changeExt = (fromPath, toExt) ->
     toPath = fromPath.split('.', 2)[0] + toExt
@@ -58,15 +63,22 @@ genCss = (svgPath, variant, opts, done) ->
     pngUrl = opts.cssUrlPrefix + sep + pngName(svgPath, variant)
     svgDims variant.svgStr, opts, (err, dims) ->
         css = """
-        #{opts.cssSelector(svgPath, variant)} {
+        #{opts.svgSelector(svgPath, variant)} {
+            width: #{dims.width}px;
+            height: #{dims.height}px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-image: url(#{svgStrToUri(variant.svgStr)});
+        }
+        #{opts.pngSelector(svgPath, variant)} {
             width: #{dims.width}px;
             height: #{dims.height}px;
             background-size: contain;
             background-repeat: no-repeat;
             background-image: url(#{pngUrl});
-            background-image: url(#{svgStrToUri(variant.svgStr)}), none;
         }
         """
+
         done(null, css)
 
 # Convert SVG string to PNG file.
@@ -146,7 +158,8 @@ defaultOptions =
     defaultHeight: 32
     cssPath: 'icons.css'
     pngDir: 'png'
-    cssSelector: defaultCssSelector
+    svgSelector: defaultSvgSelector
+    pngSelector: defaultPngSelector
     variantsOnly: false
     variants: []
 
